@@ -1,5 +1,5 @@
 FROM lsiobase/alpine:3.5
-MAINTAINER Gonzalo Peci <davyjones@linuxserver.io>, sparklyballs
+MAINTAINER Gonzalo Peci <davyjones@linuxserver.io>, sparklyballs, n3mur1t0r
 
 # environment variables
 ENV PYTHON_EGG_CACHE="/config/plugins/.python-eggs"
@@ -42,7 +42,8 @@ RUN \
 	service_identity \
 	six \
 	twisted \
-	zope.interface && \
+	zope.interface \
+        flexget && \
 
 # cleanup
  apk del --purge \
@@ -55,4 +56,4 @@ COPY root/ /
 
 # ports and volumes
 EXPOSE 8112 58846 58946 58946/udp
-VOLUME /config /downloads
+VOLUME /config /downloads /flexcfg

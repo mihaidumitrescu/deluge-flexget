@@ -5,3 +5,5 @@ chown -R abc:abc \
 	/config
 chown abc:abc \
 	/downloads
+chown -R abc:abc \
+        /flexcfg
