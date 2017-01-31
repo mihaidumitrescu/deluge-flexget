@@ -34,6 +34,7 @@ docker create \
   -e TZ=<timezone> \
   -v </path/to/your/downloads>:/downloads \
   -v </path/to/deluge/config>:/config \
+  -v </path/to/flexget/config>:/flexcfg \
   linuxserver/deluge
 ```
 
@@ -47,6 +48,7 @@ http://192.168.x.x:8080 would show you what's running INSIDE the container on po
 
 * `--net=host` - Shares host networking with container, **required**.
 * `-v /config` - deluge configs
+* `-v /flexcfg` - flexget config
 * `-v /downloads` - torrent download directory
 * `-e PGID` for for GroupID - see below for explanation
 * `-e PUID` for for UserID - see below for explanation
