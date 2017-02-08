@@ -35,7 +35,7 @@ docker create \
   -v </path/to/your/downloads>:/downloads \
   -v </path/to/deluge/config>:/config \
   -v </path/to/flexget/config>:/flexcfg \
-  linuxserver/deluge
+  n3mur1t0r/docker-deluge
 ```
 
 ## Parameters
