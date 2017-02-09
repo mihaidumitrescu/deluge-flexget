@@ -12,11 +12,14 @@ pip install --no-cache-dir -U \
 pip install --no-cache-dir -U \
        flexget && \
 
-#cleanup
+# cleanup
 apk del --purge \
        build-dependencies && \
 rm -rf \
        /root/.cache
 
-#volume
+# add local files
+COPY root/ /
+
+# volume
 VOLUME /flexcfg
