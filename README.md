@@ -1,20 +1,4 @@
-[linuxserverurl]: https://linuxserver.io
-[forumurl]: https://forum.linuxserver.io
-[ircurl]: https://www.linuxserver.io/irc/
-[podcasturl]: https://www.linuxserver.io/podcast/
-
-[![linuxserver.io](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/linuxserver_medium.png)][linuxserverurl]
-
-The [LinuxServer.io][linuxserverurl] team brings you another container release featuring easy user mapping and community support. Find us for support at:
-* [forum.linuxserver.io][forumurl]
-* [IRC][ircurl] on freenode at `#linuxserver.io`
-* [Podcast][podcasturl] covers everything to do with getting the most from your Linux Server plus a focus on all things Docker and containerisation!
-
-# linuxserver/deluge
-[![](https://images.microbadger.com/badges/version/linuxserver/deluge.svg)](https://microbadger.com/images/linuxserver/deluge "Get your own version badge on microbadger.com")[![](https://images.microbadger.com/badges/image/linuxserver/deluge.svg)](http://microbadger.com/images/linuxserver/deluge "Get your own image badge on microbadger.com")[![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/deluge.svg)][hub][![Docker Stars](https://img.shields.io/docker/stars/linuxserver/deluge.svg)][hub][![Build Status](http://jenkins.linuxserver.io:8080/buildStatus/icon?job=Dockers/LinuxServer.io/linuxserver-deluge)](http://jenkins.linuxserver.io:8080/job/Dockers/job/LinuxServer.io/job/linuxserver-deluge/)
-[hub]: https://hub.docker.com/r/linuxserver/deluge/
-
-[deluge](http://deluge-torrent.org/) Deluge is a lightweight, Free Software, cross-platform BitTorrent client.
+[Deluge](http://deluge-torrent.org/) is a lightweight, Free Software, cross-platform BitTorrent client.
 
 * Full Encryption
 * WebUI
@@ -24,79 +8,44 @@ The [LinuxServer.io][linuxserverurl] team brings you another container release f
 [![deluge](https://avatars2.githubusercontent.com/u/6733935?v=3&s=200)][delugeurl]
 [delugeurl]: http://deluge-torrent.org/
 
+[FlexGet](http://flexget.com/) is a multi-purpose automation tool for all your media.
+
+* Torrents, NZBs
+* Podcasts
+* Comics, TV, Movies
+* RSS, HTML, CSV
+* and more
+
+[![flexget](https://flexget.com/_static/flexget.png)][flexgeturl]
+[flexgeturl]: http://flexget.com/
 ## Usage
 
-```
-docker create \
-  --name deluge \
-  --net=host \
-  -e PUID=<UID> -e PGID=<GID> \
-  -e TZ=<timezone> \
-  -v </path/to/your/downloads>:/downloads \
-  -v </path/to/deluge/config>:/config \
-  -v </path/to/flexget/config>:/flexcfg \
-  n3mur1t0r/deluge
-```
+### Volumes:
 
-## Parameters
+* `<path to deluge config>:/config` deluge configs
+* `<path to downloads>:/downloads` torrent download directory
+* `<path to flexget config>:/flexcfg` flexget config
 
-`The parameters are split into two halves, separated by a colon, the left hand side representing the host and the right the container side. 
-For example with a port -p external:internal - what this shows is the port mapping from internal to external of the container.
-So -p 8080:80 would expose port 80 from inside the container to be accessible from the host's IP on port 8080
-http://192.168.x.x:8080 would show you what's running INSIDE the container on port 80.`
+### Variables:
 
+* `PUID=<uid>` See below for explanation
+* `PGID=<gid>` See below for explanation
+* `TZ=<timezone>` e.g. Europe/London
 
-* `--net=host` - Shares host networking with container, **required**.
-* `-v /config` - deluge configs
-* `-v /flexcfg` - flexget config
-* `-v /downloads` - torrent download directory
-* `-e PGID` for for GroupID - see below for explanation
-* `-e PUID` for for UserID - see below for explanation
-* `-e TZ` for timezone information, eg Europe/London
-
-It is based on alpine linux with s6 overlay, for shell access whilst the container is running do `docker exec -it deluge /bin/bash`.
+### Ports:
+* 8112:8112
+* 58846:58846
+* 58946:58946
+* 58946:58496/udp
 
 ### User / Group Identifiers
 
-Sometimes when using data volumes (`-v` flags) permissions issues can arise between the host OS and the container. We avoid this issue by allowing you to specify the user `PUID` and group `PGID`. Ensure the data volume directory on the host is owned by the same user you specify and it will "just work" ™.
+Sometimes when using data volumes, permissions issues can arise between the host OS and the container. We avoid this issue by allowing you to specify the user `PUID` and group `PGID`. Ensure the data volume directory on the host is owned by the same user you specify and it will "just work" ™.
 
-In this instance `PUID=1001` and `PGID=1001`. To find yours use `id user` as below:
-
-```
-  $ id <dockeruser>
-    uid=1001(dockeruser) gid=1001(dockergroup) groups=1001(dockergroup)
-```
-
-## Setting up the application 
+## Setting up the application
 
 The admin interface is available at http://<ip>:8112 with a default user/password of admin/deluge.
 
 To change the password (recommended) log in to the web interface and go to Preferences->Interface->Password.
 
 Change the downloads location in the webui in Preferences->Downloads and use /downloads for completed downloads.
-
-## Info
-
-* Monitor the logs of the container in realtime `docker logs -f deluge`.
-
-* container version number 
-
-`docker inspect -f '{{ index .Config.Labels "build_version" }}' deluge`
-
-* image version number
-
-`docker inspect -f '{{ index .Config.Labels "build_version" }}' linuxserver/deluge`
-
-## Versions
-
-+ **28.12.16:** Rebase to alpine 3.5 baseimage.
-+ **17.11.16:** Rebase to edge baseimage.
-+ **13.10.16:** Switch to libressl as openssl deprecated from alpine linux and deluge dependency
-no longer installs.
-+ **30.09.16:** Fix umask.
-+ **09.09.16:** Add layer badges to README.
-+ **30.08.16:** Use pip packages for some critical dependencies.
-+ **28.08.16:** Add badges to README.
-+ **15.08.16:** Rebase to alpine linux.
-+ **09.11.15:** Add unrar and unzip
-+ **15.10.15:** Initial Release. 
