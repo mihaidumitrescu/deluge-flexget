@@ -34,12 +34,12 @@ LABEL org.freenas.interactive="false"                       \
           {							                                    \
               \"env\": \"PGID\",					                  \
               \"descr\": \"GroupID\",					              \
-              \"optional\": true					                  \
+              \"optional\": false					                  \
           },							                                  \
           {							                                    \
               \"env\": \"PUID\",					                  \
               \"descr\": \"UserID\",					              \
-              \"optional\": true					                  \
+              \"optional\": false					                  \
          }							                                    \
       ]"
 
@@ -80,7 +80,7 @@ RUN \
   six \
   twisted \
   zope.interface \
-        flexget && \
+  flexget && \
 
 # cleanup
  apk del --purge \
