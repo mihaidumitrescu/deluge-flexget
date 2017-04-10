@@ -5,9 +5,6 @@ if [[ $(/usr/bin/flexget -V | tail -1) = "You are on the latest release." ]]; th
 fi
 
 /sbin/apk add --no-cache py2-pip
-/usr/bin/pip install --no-cache-dir -U pip
-/usr/bin/pip install --no-cache-dir -U setuptools
-/usr/bin/pip install --no-cache-dir -U flexget
+/usr/bin/pip install --no-cache-dir -U pip setuptools flexget subliminal
 /sbin/apk del --purge py2-pip
 /bin/rm -rf /root/.cache
-

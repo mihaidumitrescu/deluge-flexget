@@ -37,7 +37,8 @@ RUN \
   six \
   twisted \
   zope.interface \
-  flexget && \
+  flexget \
+  subliminal && \
 
 # cleanup
  apk del --purge \
