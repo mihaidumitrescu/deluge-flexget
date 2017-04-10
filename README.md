@@ -1,4 +1,6 @@
-[Deluge](http://deluge-torrent.org/) is a lightweight, Free Software, cross-platform BitTorrent client.
+[delugeurl]: http://deluge-torrent.org/
+[flexgeturl]: http://flexget.com/
+[Deluge][delugeurl] is a lightweight, Free Software, cross-platform BitTorrent client.
 
 * Full Encryption
 * WebUI
@@ -6,9 +8,8 @@
 * Much more...
 
 [![deluge](https://avatars2.githubusercontent.com/u/6733935?v=3&s=200)][delugeurl]
-[delugeurl]: http://deluge-torrent.org/
 
-[FlexGet](http://flexget.com/) is a multi-purpose automation tool for all your media.
+[FlexGet][flexgeturl] is a multi-purpose automation tool for all your media.
 
 * Torrents, NZBs
 * Podcasts
@@ -17,7 +18,7 @@
 * and more
 
 [![flexget](https://flexget.com/_static/flexget.png)][flexgeturl]
-[flexgeturl]: http://flexget.com/
+
 ## Usage
 
 ```
