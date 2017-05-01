@@ -7,10 +7,12 @@ ENV PYTHON_EGG_CACHE="/config/plugins/.python-eggs"
 RUN \
  apk add --no-cache \
   ca-certificates \
-  libressl2.4-libssl \
   p7zip \
   unrar \
   unzip && \
+ apk add --no-cache \
+  --repository http://nl.alpinelinux.org/alpine/edge/main \
+  libressl2.5-libssl && \
  apk add --no-cache \
   --repository http://nl.alpinelinux.org/alpine/edge/testing \
   deluge && \

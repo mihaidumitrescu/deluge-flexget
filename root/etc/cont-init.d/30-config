@@ -6,4 +6,4 @@ chown -R abc:abc \
 chown abc:abc \
 	/downloads
 chown -R abc:abc \
-        /flexcfg
+	/flexcfg

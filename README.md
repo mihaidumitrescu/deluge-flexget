@@ -27,6 +27,7 @@ docker create \
   --net=host \
   -e PUID=<UID> -e PGID=<GID> \
   -e TZ=<timezone> \
+  -e UMASK_SET=<022> \
   -v </path/to/your/downloads>:/downloads \
   -v </path/to/deluge/config>:/config \
   -v </path/to/flexget/config>:/flexcfg \
@@ -47,6 +48,7 @@ http://192.168.x.x:8080 would show you what's running INSIDE the container on po
 * `-v /downloads` - torrent download directory
 * `-e PGID` for for GroupID - see below for explanation
 * `-e PUID` for for UserID - see below for explanation
+* `-e UMASK_SET` for umask setting of deluge, *optional* , default if left unset is 022.
 * `-e TZ` for timezone information, eg Europe/London
 
 It is based on alpine linux with s6 overlay, for shell access whilst the container is running do `docker exec -it deluge /bin/bash`.
