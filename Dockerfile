@@ -19,7 +19,9 @@ RUN \
   openssl \
   p7zip \
   unrar \
-  unzip && \
+  unzip \
+  cifs-utils \
+  nano && \
  apk add --no-cache \
   --repository http://nl.alpinelinux.org/alpine/edge/testing \
   deluge && \
