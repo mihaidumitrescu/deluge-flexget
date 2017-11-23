@@ -21,8 +21,10 @@ RUN \
   p7zip \
   unrar \
   unzip \
-  cifs-utils \
   nano && \
+ apk add --no-cache \
+  --repository http://nl.alpinelinux.org/alpine/edge/main \
+  libressl2.6-libssl && \
  apk add --no-cache \
   --repository http://nl.alpinelinux.org/alpine/edge/testing \
   deluge && \
