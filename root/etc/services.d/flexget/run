@@ -2,4 +2,4 @@
 
 exec \
         s6-setuidgid abc /usr/bin/flexget -c /flexcfg/config.yml \
-        daemon start
+        daemon start --autoreload-config
