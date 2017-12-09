@@ -33,7 +33,7 @@ RUN \
 	incremental \
 	pip && \
  pip install --no-cache-dir -U \
-        chardet \
+ 	chardet \
 	crypto \
 	flexget \
 	mako \
